@@ -1,6 +1,11 @@
+import '../assets/scss/app.scss';
+import SampleCompontent from './SampleComponent/index';
 
 function App() {
-  return 'hello'
+
+	return (
+		<SampleCompontent />
+	)
 }
 
 export default App;
