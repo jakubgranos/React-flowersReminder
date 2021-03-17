@@ -1,14 +1,14 @@
 import React from 'react';
 import { AuthSignupSection, AuthSignupHeading } from './style';
-import AuthSignupForm from './Form/Form';
+import AuthSignupForm from '../Form/SignupForm';
 
-const SignupForm = () => {
+const Signup = () => {
 	return (
 		<AuthSignupSection>
-			<AuthSignupHeading>Sign Up</AuthSignupHeading>
+			<AuthSignupHeading>Zarejestruj się</AuthSignupHeading>
 			<AuthSignupForm />
 		</AuthSignupSection>
 	)
 }
 
-export default SignupForm;
+export default Signup;

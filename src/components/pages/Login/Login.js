@@ -1,7 +1,8 @@
 import React from 'react';
+import Signin from '../../Auth/Signin/Signin';
 const Home = () => {
 	return (
-		<div>Login</div>
+		<Signin />
 	)
 }
 
