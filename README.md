@@ -71,21 +71,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### React with firebase setup
 
-create a .env.local and inside of this file type:
-
-REACT_APP_FIREBASE_API_KEY=
-
-REACT_APP_FIREBASE_AUTH_DOMAIN=
-
-REACT_APP_FIREBASE_PROJECT_ID=
-
-REACT_APP_FIREABSE_PROJECT_STORAGE_BUCKET=
-
-REACT_APP_FIREBASE_MESSAGING_SENDER_ID=
-
-REACT_APP_FIREBASE_APP_ID=
-
-REACT_APP_FIREBASE_MEASUREMENT_ID=G
+create a .env.local (check env-example)
 
 ### manifets.json
 
