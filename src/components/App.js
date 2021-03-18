@@ -1,17 +1,17 @@
 import '../assets/scss/app.scss';
-import React from 'react';
-// import AuthSignup from './Auth/Signup/Signup';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Home from '../components/pages/Home/Home';
-import Login from '../components/pages/Login/Login';
-import SignupPage from '../components/pages/Signup/Signup';
+import Login from './pages/Auth/Login/Login';
+import Register from './pages/Auth/Register/Register';
+import auth from './firebase';
 function App() {
 	return (
 		<Router>
 			<div>
 				<Route exact path="/" component={Home} />
 				<Route exact path="/login" component={Login} />
-				<Route exact path="/signup" component={SignupPage} />
+				<Route exact path="/register" component={Register} />
 			</div>
 		</Router>
 	)

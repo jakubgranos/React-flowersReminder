@@ -12,7 +12,7 @@ const app = firebase.initializeApp({
 	measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 })
 
-export const auth = app.auth();
+export const fire = app.auth();
 export const firestore = app.firestore();
 export default app;
 
