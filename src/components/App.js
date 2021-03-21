@@ -1,4 +1,5 @@
 import '../assets/scss/app.scss';
+import AuthBackgroundSelector from './style';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Redirect } from 'react-router'
@@ -7,6 +8,7 @@ import Login from "./pages/Auth/Login/Login";
 import Register from './pages/Auth/Register/Register';
 import AuthContext from './AuthContext';
 import fire from './firebase';
+import authBackground from '../assets/images/auth-background.jpg'
 
 function App() {
 	const [value, setValue] = useState(null)
@@ -19,17 +21,14 @@ function App() {
 	})
 	return (
 		<Router>
-			<div>
+			<main className="app-main" >
+				<AuthBackgroundSelector src={authBackground} alt="" />
 				<AuthContext.Provider value={{ value, setValue }}>
-					{value ? (
-						<Route exact path="/" component={Home} />
-					) : (
-						<Redirect to="/login" />
-					)}
+					{value && <Route exact path="/" component={Home} />}
 					<Route exact path="/login" component={Login} ></Route>
 				</AuthContext.Provider>
 				<Route exact path="/register" component={Register} />
-			</div>
+			</main>
 		</Router>
 	)
 }

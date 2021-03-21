@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import fire from '../../../firebase';
 import {
 	AuthSection,
@@ -7,8 +7,15 @@ import {
 	AuthFormWrapper,
 	AuthFormLabel,
 	AuthFormInput,
-	AuthFormButton
+	AuthFormButton,
+	AuthHeading,
+	AuthSubHeading,
+	AuthFormLinkTo
 } from '../Auth-styles/style';
+import { ReactSVG } from 'react-svg'
+import IconEmail from '../../../../assets/icons/icon-email.svg'
+import IconUser from '../../../../assets/icons/icon-user.svg'
+import IconPassword from '../../../../assets/icons/icon-password.svg'
 
 const Register = () => {
 	const history = useHistory();
@@ -30,19 +37,37 @@ const Register = () => {
 			setFeedback('Coś poszło nie tak ... Spróbuj jeszcze raz')
 		}
 	}
+	const [newClass, setNewClass] = useState('');
+	const changeToLogin = () => {
+		setNewClass('test');
+		setTimeout(() => {
+			history.push('/login')
+		}, 2100)
+	}
 
 	return (
-		<AuthSection>
-			<AuthHeadingSection>Zarejestruj się</AuthHeadingSection>
+		<AuthSection className={newClass}>
+			<AuthHeadingSection className={newClass}>
+				<AuthHeading>Rejestracja</AuthHeading>
+				<AuthSubHeading>Dołącz do nas - Już nigdy nie <br></br> zapomnisz o kwiatkach!</AuthSubHeading>
+			</AuthHeadingSection>
 			<AuthFormWrapper>
-				<AuthFormLabel>Email</AuthFormLabel>
-				<AuthFormInput type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+				<AuthFormLabel>
+					<AuthFormInput type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
+					<ReactSVG src={IconEmail} />
+				</AuthFormLabel>
+				<AuthFormLabel>
+					<AuthFormInput type="text" placeholder="Imie" required />
+					<ReactSVG src={IconUser} />
+				</AuthFormLabel>
+				<AuthFormLabel>
+					<AuthFormInput type="password" placeholder="Hasło" value={password} onChange={e => setPassword(e.target.value)} required />
+					<ReactSVG src={IconPassword} />
+				</AuthFormLabel>
 
-				<AuthFormLabel>Hasło</AuthFormLabel>
-				<AuthFormInput type="password" placeholder="Hasło.." value={password} onChange={e => setPassword(e.target.value)} />
-
-				<AuthFormButton onClick={(e) => submitListener(e)}>Zarejestruj się</AuthFormButton>
+				<AuthFormButton onClick={(e) => submitListener(e)}>Stwórz konto</AuthFormButton>
 				{feedback}
+				<AuthFormLinkTo>Masz już konto? <a onClick={changeToLogin}>Zaloguj się</a> </AuthFormLinkTo>
 			</AuthFormWrapper>
 		</AuthSection>
 	)

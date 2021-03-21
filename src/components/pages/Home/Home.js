@@ -5,10 +5,12 @@ import { useHistory } from "react-router-dom";
 import fire from '../../firebase';
 const Home = () => {
 	const { value, setValue } = useContext(AuthContext);
+	const history = useHistory();
 	const logout = (e) => {
 		e.preventDefault();
 		fire.auth().signOut().then(() => {
 			console.log('wylogowano');
+			history.push('/login')
 		})
 	}
 	return (

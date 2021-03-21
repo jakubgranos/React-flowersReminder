@@ -7,10 +7,16 @@ import {
 	AuthFormWrapper,
 	AuthFormLabel,
 	AuthFormInput,
-	AuthFormButton
+	AuthFormButton,
+	AuthHeading,
+	AuthSubHeading,
+	AuthFormLinkTo
 } from '../Auth-styles/style';
 import AuthContext from '../../../AuthContext';
-
+import { ReactSVG } from 'react-svg'
+import IconEmail from '../../../../assets/icons/icon-email.svg'
+import IconUser from '../../../../assets/icons/icon-user.svg'
+import IconPassword from '../../../../assets/icons/icon-password.svg'
 const Login = () => {
 	const history = useHistory()
 	const [userTest, setUserTest] = useState('');
@@ -43,20 +49,32 @@ const Login = () => {
 			console.log('wylogowano');
 		})
 	}
+
+	const [newClass, setNewClass] = useState('');
+	const changeToLogin = () => {
+		setNewClass('test');
+		setTimeout(() => {
+			history.push('/register')
+		}, 2100)
+	}
+
 	return (
-		<AuthSection>
-			<AuthHeadingSection>Zaloguj się</AuthHeadingSection>
-			Zalogowany jako {value}
+		<AuthSection className={newClass}>
+			<AuthHeadingSection>
+				<AuthHeading>Logowanie</AuthHeading>
+				<AuthSubHeading>Witaj z powrotem <br></br> Życzymy miłego dnia! </AuthSubHeading>
+			</AuthHeadingSection>
 			<AuthFormWrapper>
-				<AuthFormLabel>Email</AuthFormLabel>
-				<AuthFormInput type="email" placeholder="Email" value={userEmail} onChange={e => setUserEmail(e.target.value)} />
-
-				<AuthFormLabel>Hasło</AuthFormLabel>
-				<AuthFormInput type="password" placeholder="Hasło.." value={userPassword} onChange={e => setUserPassword(e.target.value)} />
-				{userTest && <div>zalogowano</div>}
-
+				<AuthFormLabel>
+					<AuthFormInput type="email" placeholder="Email" value={userEmail} onChange={e => setUserEmail(e.target.value)} />
+					<ReactSVG src={IconEmail} />
+				</AuthFormLabel>
+				<AuthFormLabel>
+					<AuthFormInput type="password" placeholder="Hasło.." value={userPassword} onChange={e => setUserPassword(e.target.value)} />
+					<ReactSVG src={IconPassword} />
+				</AuthFormLabel>
 				<AuthFormButton onClick={(e) => submitListener(e)}>Zaloguj się</AuthFormButton>
-				<AuthFormButton onClick={(e) => logout(e)}>Wygoluj się</AuthFormButton>
+				<AuthFormLinkTo>Nie masz jeszcze konta? <a onClick={changeToLogin}>Zarejestruj się</a> </AuthFormLinkTo>
 			</AuthFormWrapper>
 		</AuthSection>
 	)
