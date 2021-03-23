@@ -9,8 +9,7 @@ const Home = () => {
 	const logout = (e) => {
 		e.preventDefault();
 		fire.auth().signOut().then(() => {
-			console.log('wylogowano');
-			history.push('/login')
+			history.push('/')
 		})
 	}
 	return (

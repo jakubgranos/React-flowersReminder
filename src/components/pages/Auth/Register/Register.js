@@ -10,7 +10,8 @@ import {
 	AuthFormButton,
 	AuthHeading,
 	AuthSubHeading,
-	AuthFormLinkTo
+	AuthFormLinkTo,
+	AuthFormFeedback
 } from '../Auth-styles/style';
 import { ReactSVG } from 'react-svg'
 import IconEmail from '../../../../assets/icons/icon-email.svg'
@@ -27,21 +28,21 @@ const Register = () => {
 	const authInputs = { email, password }
 	const submitListener = (e) => {
 		e.preventDefault();
-		if (email && password) {
-			fire.auth().createUserWithEmailAndPassword(authInputs.email, authInputs.password).then(() => {
-				history.push('/login')
-			}).catch(err => {
-				setFeedback(err.message)
-			})
-		} else {
-			setFeedback('Coś poszło nie tak ... Spróbuj jeszcze raz')
-		}
+		fire.auth().createUserWithEmailAndPassword(authInputs.email, authInputs.password).then(() => {
+			setNewClass('active');
+			setTimeout(() => {
+				history.push('/')
+			}, 2100)
+		}).catch(err => {
+			setFeedback(err.message)
+		})
+
 	}
 	const [newClass, setNewClass] = useState('');
 	const changeToLogin = () => {
-		setNewClass('test');
+		setNewClass('active');
 		setTimeout(() => {
-			history.push('/login')
+			history.push('/')
 		}, 2100)
 	}
 
@@ -53,20 +54,20 @@ const Register = () => {
 			</AuthHeadingSection>
 			<AuthFormWrapper>
 				<AuthFormLabel>
-					<AuthFormInput type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
+					<AuthFormInput type="email" placeholder="Email*" value={email} onChange={e => setEmail(e.target.value)} required />
 					<ReactSVG src={IconEmail} />
 				</AuthFormLabel>
 				<AuthFormLabel>
-					<AuthFormInput type="text" placeholder="Imie" required />
+					<AuthFormInput type="text" placeholder="Imie*" required />
 					<ReactSVG src={IconUser} />
 				</AuthFormLabel>
 				<AuthFormLabel>
-					<AuthFormInput type="password" placeholder="Hasło" value={password} onChange={e => setPassword(e.target.value)} required />
+					<AuthFormInput type="password" placeholder="Hasło*" value={password} onChange={e => setPassword(e.target.value)} required />
 					<ReactSVG src={IconPassword} />
 				</AuthFormLabel>
 
 				<AuthFormButton onClick={(e) => submitListener(e)}>Stwórz konto</AuthFormButton>
-				{feedback}
+				{feedback !== '' && <AuthFormFeedback> {feedback} </AuthFormFeedback>}
 				<AuthFormLinkTo>Masz już konto? <a onClick={changeToLogin}>Zaloguj się</a> </AuthFormLinkTo>
 			</AuthFormWrapper>
 		</AuthSection>

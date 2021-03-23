@@ -16,6 +16,7 @@ const AuthSection = styled.section`
 	overflow: hidden;
 	border-radius: 33px;
 	box-shadow: 15px 9px 18px #cc7a0454;
+	transition: transform 8s;
 
 	@keyframes TopBottom {
 		from {
@@ -53,11 +54,15 @@ const AuthSection = styled.section`
 		transition: height 2s, border-radius 4s;
 		animation: BottomTop 2s;
 	}
-	
-	&.test {
+
+	&.active {
 		&:before {
 			animation: TopBottom 2s;
 		}
+	}
+
+	&.active-zoom {
+		transform: scale(100);
 	}
 `;
 
@@ -76,7 +81,7 @@ const AuthHeadingSection = styled.div`
 
 	animation: changeOpacity 2s;
 
-	&.test {
+	&.active {
 		animation: changeOpacity 2s;
 	}
 `;
@@ -194,4 +199,14 @@ const AuthFormLinkTo = styled.p`
 	}
 `;
 
-export { AuthSection, AuthHeadingSection, AuthHeading, AuthSubHeading, AuthFormWrapper, AuthFormLabel, AuthFormInput, AuthFormButton, AuthFormLinkTo };
+
+const AuthFormFeedback = styled.p`
+	margin: 15px 0;
+    padding: 11px 15px;
+    border-radius: 50px;
+    text-align: center;
+    background: #e82a2a;
+	color: white;
+`;
+
+export { AuthSection, AuthHeadingSection, AuthHeading, AuthSubHeading, AuthFormWrapper, AuthFormLabel, AuthFormInput, AuthFormButton, AuthFormLinkTo, AuthFormFeedback };

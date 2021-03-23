@@ -10,30 +10,35 @@ import {
 	AuthFormButton,
 	AuthHeading,
 	AuthSubHeading,
-	AuthFormLinkTo
+	AuthFormLinkTo,
+	AuthFormFeedback
 } from '../Auth-styles/style';
 import AuthContext from '../../../AuthContext';
 import { ReactSVG } from 'react-svg'
 import IconEmail from '../../../../assets/icons/icon-email.svg'
-import IconUser from '../../../../assets/icons/icon-user.svg'
 import IconPassword from '../../../../assets/icons/icon-password.svg'
 const Login = () => {
 	const history = useHistory()
-	const [userTest, setUserTest] = useState('');
 	const [userEmail, setUserEmail] = useState('');
 	const [userPassword, setUserPassword] = useState('');
+	const [feedback, setFeedback] = useState('');
 	const { value, setValue } = useContext(AuthContext);
+	const [newClass, setNewClass] = useState('');
 	const submitListener = (e) => {
 		e.preventDefault();
 		fire.auth().signInWithEmailAndPassword(userEmail, userPassword).then(res => {
 			if (res.user) {
-				setUserTest(true);
-				history.push('/')
-			} else {
-				setUserTest(false)
+				setNewClass('active active-zoom');
+				setTimeout(() => {
+					history.push('/homepage')
+				}, 1000)
 			}
-		}).catch(e => {
-			console.log(e.error);
+		}).catch(err => {
+			setNewClass('active');
+			setTimeout(() => {
+				setFeedback(err.message)
+				setNewClass();
+			}, 2100)
 		});
 
 		fire.auth().onAuthStateChanged(user => {
@@ -43,6 +48,14 @@ const Login = () => {
 		})
 	}
 
+	const changeToLogin = () => {
+		setNewClass('active');
+		setTimeout(() => {
+			history.push('/register')
+		}, 2100)
+	}
+
+
 	const logout = (e) => {
 		e.preventDefault();
 		fire.auth().signOut().then(() => {
@@ -50,13 +63,6 @@ const Login = () => {
 		})
 	}
 
-	const [newClass, setNewClass] = useState('');
-	const changeToLogin = () => {
-		setNewClass('test');
-		setTimeout(() => {
-			history.push('/register')
-		}, 2100)
-	}
 
 	return (
 		<AuthSection className={newClass}>
@@ -74,7 +80,8 @@ const Login = () => {
 					<ReactSVG src={IconPassword} />
 				</AuthFormLabel>
 				<AuthFormButton onClick={(e) => submitListener(e)}>Zaloguj się</AuthFormButton>
-				<AuthFormLinkTo>Nie masz jeszcze konta? <a onClick={changeToLogin}>Zarejestruj się</a> </AuthFormLinkTo>
+				{feedback !== '' && <AuthFormFeedback> {feedback} </AuthFormFeedback>}
+				<AuthFormLinkTo >Nie masz jeszcze konta? <a onClick={changeToLogin}>Zarejestruj się</a> </AuthFormLinkTo>
 			</AuthFormWrapper>
 		</AuthSection>
 	)
