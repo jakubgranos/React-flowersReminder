@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from "react-router-dom";
 import fire from '../../../firebase';
 import {
@@ -17,13 +17,17 @@ import AuthContext from '../../../AuthContext';
 import { ReactSVG } from 'react-svg'
 import IconEmail from '../../../../assets/icons/icon-email.svg'
 import IconPassword from '../../../../assets/icons/icon-password.svg'
+import AuthChangeComponent from '../../AuthChangeComponent';
 const Login = () => {
 	const history = useHistory()
 	const [userEmail, setUserEmail] = useState('');
 	const [userPassword, setUserPassword] = useState('');
 	const [feedback, setFeedback] = useState('');
-	const { value, setValue } = useContext(AuthContext);
+	const { globalUserEmail, setGlobalUserEmail } = useContext(AuthContext);
 	const [newClass, setNewClass] = useState('');
+	const { changeAuthComponent, setChangeAuthComponent } = useContext(AuthChangeComponent);
+
+
 	const submitListener = (e) => {
 		e.preventDefault();
 		fire.auth().signInWithEmailAndPassword(userEmail, userPassword).then(res => {
@@ -43,7 +47,7 @@ const Login = () => {
 
 		fire.auth().onAuthStateChanged(user => {
 			if (user) {
-				setValue(user.email)
+				setGlobalUserEmail(user.email)
 			}
 		})
 	}
@@ -51,16 +55,8 @@ const Login = () => {
 	const changeToLogin = () => {
 		setNewClass('active');
 		setTimeout(() => {
-			history.push('/register')
+			setChangeAuthComponent(false)
 		}, 2100)
-	}
-
-
-	const logout = (e) => {
-		e.preventDefault();
-		fire.auth().signOut().then(() => {
-			console.log('wylogowano');
-		})
 	}
 
 
@@ -68,7 +64,7 @@ const Login = () => {
 		<AuthSection className={newClass}>
 			<AuthHeadingSection>
 				<AuthHeading>Logowanie</AuthHeading>
-				<AuthSubHeading>Witaj z powrotem <br></br> Życzymy miłego dnia! </AuthSubHeading>
+				<AuthSubHeading>Witaj ponownie, <br></br> Życzymy miłego dnia! </AuthSubHeading>
 			</AuthHeadingSection>
 			<AuthFormWrapper>
 				<AuthFormLabel>

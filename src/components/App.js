@@ -1,35 +1,29 @@
 import '../assets/scss/app.scss';
 import AuthBackgroundSelector from './style';
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom'
 import Home from '../components/pages/Home/Home';
-import Login from "./pages/Auth/Login/Login";
-import Register from './pages/Auth/Register/Register';
 import AuthContext from './AuthContext';
 import fire from './firebase';
 import authBackground from '../assets/images/auth-background.jpg'
-
+import Auth from '../components/pages/Auth/Auth/Auth';
 function App() {
-	const [value, setValue] = useState(null)
+	const [globalUserEmail, setGlobalUserEmail] = useState(null)
 	fire.auth().onAuthStateChanged(user => {
 		if (user) {
-			setValue(user.email)
+			setGlobalUserEmail(user.email)
 		}
 	})
 
 	return (
 		<Router>
-			<main className="app-main" >
+			<main className="app-main">
 				<AuthBackgroundSelector src={authBackground} alt="" />
-				<AuthContext.Provider value={{ value, setValue }}>
-					<Route exact path="/" component={Login} ></Route>
-					{value ? (
-						<Route exact path="/homepage" component={Home} ></Route>
-					) : (
-						<Redirect to="/" />
-					)}
+				<AuthContext.Provider value={{ globalUserEmail, setGlobalUserEmail }}>
+					{globalUserEmail && <Route exact path="/homepage" component={Home} ></Route>}
+					{/* {globalUserEmail ? (<Redirect to="/homepage" />) : (<Redirect to="/" />)} */}
+					<Route exact path="/" component={Auth} ></Route>
 				</AuthContext.Provider>
-				<Route exact path="/register" component={Register} />
 			</main>
 		</Router>
 	)

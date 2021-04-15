@@ -17,6 +17,7 @@ const AuthSection = styled.section`
 	border-radius: 33px;
 	box-shadow: 15px 9px 18px #cc7a0454;
 	transition: transform 8s;
+	min-height: 840px;
 
 	@keyframes TopBottom {
 		from {
@@ -52,12 +53,14 @@ const AuthSection = styled.section`
 		z-index: 3;
 		border-radius: 0 0 90% 50%;
 		transition: height 2s, border-radius 4s;
-		animation: BottomTop 2s;
+		animation: BottomTop 2s infinite alternate;
+		animation-iteration-count: 1;
 	}
 
 	&.active {
 		&:before {
-			animation: TopBottom 2s;
+		animation: TopBottom 2s infinite alternate;
+		animation-iteration-count: 2;
 		}
 	}
 
