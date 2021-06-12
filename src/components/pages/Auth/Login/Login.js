@@ -59,7 +59,6 @@ const Login = () => {
 		}, 2100)
 	}
 
-
 	return (
 		<AuthSection className={newClass}>
 			<AuthHeadingSection>

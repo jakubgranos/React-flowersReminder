@@ -1,10 +1,12 @@
-import { render } from 'react';
-import React from 'react'
-import sidebarMenuSection from './style';
+import React, { useState } from 'react'
+import SidebarMenuSection from './style';
+import Hamburger from '../hamburger/hamburger';
 const SidebarMenu = () => {
-
+	const [sideBarActive, setSidebarActive] = useState('');
 	return (
-		<div>Sidebar</div>
+		<SidebarMenuSection className={sideBarActive ? "active" : null}>
+			<Hamburger sidebarClass={{ setSidebarActive, sideBarActive }} />
+		</SidebarMenuSection>
 	)
 }
 

@@ -14,14 +14,20 @@ function App() {
 			setGlobalUserEmail(user.email)
 		}
 	})
+	const currentURL = window.location.pathname;
+	let currentURLClass ='';
+	if(currentURL === '/homepage'){
+		currentURLClass = 'app-main-homepage';
+	}else {
+		currentURLClass = 'app-main'
+	}
 
 	return (
 		<Router>
-			<main className="app-main">
+			<main className={currentURLClass}>
 				<AuthBackgroundSelector src={authBackground} alt="" />
 				<AuthContext.Provider value={{ globalUserEmail, setGlobalUserEmail }}>
 					{globalUserEmail && <Route exact path="/homepage" component={Home} ></Route>}
-					{/* {globalUserEmail ? (<Redirect to="/homepage" />) : (<Redirect to="/" />)} */}
 					<Route exact path="/" component={Auth} ></Route>
 				</AuthContext.Provider>
 			</main>

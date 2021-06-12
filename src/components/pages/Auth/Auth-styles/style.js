@@ -18,7 +18,7 @@ const AuthSection = styled.section`
 	box-shadow: 15px 9px 18px #cc7a0454;
 	transition: transform 8s;
 	min-height: 840px;
-
+	
 	@keyframes TopBottom {
 		from {
 			height: 340px;

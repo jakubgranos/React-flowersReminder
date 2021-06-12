@@ -7,11 +7,9 @@ import AuthChangeComponent from '../../AuthChangeComponent';
 const Auth = () => {
 	const [changeAuthComponent, setChangeAuthComponent] = useState(null);
 	return (
-		<section>
-			<AuthChangeComponent.Provider value={{ changeAuthComponent, setChangeAuthComponent }}>
-				{changeAuthComponent ? (<Login></Login>) : (<Register></Register>)}
-			</AuthChangeComponent.Provider>
-		</section>
+		<AuthChangeComponent.Provider value={{ changeAuthComponent, setChangeAuthComponent }}>
+			{changeAuthComponent ? (<Register></Register>) : (<Login></Login>)}
+		</AuthChangeComponent.Provider>
 	)
 }
 
