@@ -18,7 +18,7 @@ import IconEmail from '../../../../assets/icons/icon-email.svg'
 import IconUser from '../../../../assets/icons/icon-user.svg'
 import IconPassword from '../../../../assets/icons/icon-password.svg'
 
-import AuthChangeComponent from '../../AuthChangeComponent';
+import AuthChangeComponent from '../../../PagesContexts/AuthChangeComponent';
 const Register = () => {
 	const db = fire.firestore();
 	const history = useHistory();
@@ -45,10 +45,11 @@ const Register = () => {
 	}
 
 	const [newClass, setNewClass] = useState('');
-	const changeToLogin = () => {
+	const changeToLogin = (e) => {
+		e.preventDefault();
 		setNewClass('active');
 		setTimeout(() => {
-			setChangeAuthComponent(true)
+			setChangeAuthComponent(false)
 		}, 2100)
 	}
 
@@ -75,7 +76,7 @@ const Register = () => {
 
 				<AuthFormButton onClick={(e) => submitListener(e)}>Stwórz konto</AuthFormButton>
 				{feedback !== '' && <AuthFormFeedback> {feedback} </AuthFormFeedback>}
-				<AuthFormLinkTo>Masz już konto? <a onClick={changeToLogin}>Zaloguj się</a> </AuthFormLinkTo>
+				<AuthFormLinkTo>Masz już konto? <button onClick={changeToLogin}>Zaloguj się</button> </AuthFormLinkTo>
 			</AuthFormWrapper>
 		</AuthSection>
 	)

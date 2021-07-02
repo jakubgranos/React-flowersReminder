@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import SidebarMenuSection from './style';
-import Hamburger from '../hamburger/hamburger';
+import Hamburger from '../Hamburger/Hamburger';
 const SidebarMenu = () => {
 	const [sideBarActive, setSidebarActive] = useState('');
 	return (

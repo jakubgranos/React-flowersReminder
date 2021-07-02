@@ -1,9 +1,9 @@
 import Homepage from './style';
 import React, { useContext } from 'react';
-import AuthContext from '../../AuthContext';
+import AuthContext from '../../PagesContexts/AuthContext';
 import { useHistory } from "react-router-dom";
 import fire from '../../firebase';
-import SidebarMenu from '../Sidebars/SidebarMenu/SiebarMenu';
+import SidebarMenu from '../../modules/Sidebars/SidebarMenu/SiebarMenu';
 
 
 const Home = () => {
@@ -20,6 +20,7 @@ const Home = () => {
 			<SidebarMenu />
 			<div className="container">
 				<button onClick={(e) => logout(e)}>Wygoluj się</button>
+
 			</div>
 		</Homepage>
 	)

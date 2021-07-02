@@ -1,9 +1,9 @@
 import '../assets/scss/app.scss';
 import AuthBackgroundSelector from './style';
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Home from '../components/pages/Home/Home';
-import AuthContext from './AuthContext';
+import AuthContext from './PagesContexts/AuthContext';
 import fire from './firebase';
 import authBackground from '../assets/images/auth-background.jpg'
 import Auth from '../components/pages/Auth/Auth/Auth';
@@ -15,10 +15,10 @@ function App() {
 		}
 	})
 	const currentURL = window.location.pathname;
-	let currentURLClass ='';
-	if(currentURL === '/homepage'){
+	let currentURLClass = '';
+	if (currentURL === '/homepage') {
 		currentURLClass = 'app-main-homepage';
-	}else {
+	} else {
 		currentURLClass = 'app-main'
 	}
 

@@ -12,12 +12,12 @@ import {
 	AuthSubHeading,
 	AuthFormLinkTo,
 	AuthFormFeedback
-} from '../Auth-styles/style';
-import AuthContext from '../../../AuthContext';
+} from '../AuthStyles/style';
+import AuthContext from '../../../PagesContexts/AuthContext';
 import { ReactSVG } from 'react-svg'
 import IconEmail from '../../../../assets/icons/icon-email.svg'
 import IconPassword from '../../../../assets/icons/icon-password.svg'
-import AuthChangeComponent from '../../AuthChangeComponent';
+import AuthChangeComponent from '../../../PagesContexts/AuthChangeComponent';
 const Login = () => {
 	const history = useHistory()
 	const [userEmail, setUserEmail] = useState('');
@@ -52,10 +52,11 @@ const Login = () => {
 		})
 	}
 
-	const changeToLogin = () => {
+	const changeToLogin = (e) => {
+		e.preventDefault();
 		setNewClass('active');
 		setTimeout(() => {
-			setChangeAuthComponent(false)
+			setChangeAuthComponent(true)
 		}, 2100)
 	}
 
@@ -76,7 +77,7 @@ const Login = () => {
 				</AuthFormLabel>
 				<AuthFormButton onClick={(e) => submitListener(e)}>Zaloguj się</AuthFormButton>
 				{feedback !== '' && <AuthFormFeedback> {feedback} </AuthFormFeedback>}
-				<AuthFormLinkTo >Nie masz jeszcze konta? <a onClick={changeToLogin}>Zarejestruj się</a> </AuthFormLinkTo>
+				<AuthFormLinkTo >Nie masz jeszcze konta? <button onClick={changeToLogin}>Zarejestruj się</button> </AuthFormLinkTo>
 			</AuthFormWrapper>
 		</AuthSection>
 	)
