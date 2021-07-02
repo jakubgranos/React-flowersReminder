@@ -4,7 +4,7 @@ import AuthContext from '../../PagesContexts/AuthContext';
 import { useHistory } from "react-router-dom";
 import fire from '../../firebase';
 import SidebarMenu from '../../modules/Sidebars/SidebarMenu/SiebarMenu';
-
+import AddFlower from '../../modules/AddFlower/AddFlower';
 
 const Home = () => {
 	const { value, setValue } = useContext(AuthContext);
@@ -20,7 +20,7 @@ const Home = () => {
 			<SidebarMenu />
 			<div className="container">
 				<button onClick={(e) => logout(e)}>Wygoluj się</button>
-
+				<AddFlower />
 			</div>
 		</Homepage>
 	)

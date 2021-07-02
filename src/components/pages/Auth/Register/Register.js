@@ -12,7 +12,7 @@ import {
 	AuthSubHeading,
 	AuthFormLinkTo,
 	AuthFormFeedback
-} from '../Auth-styles/style';
+} from '../AuthStyles/style';
 import { ReactSVG } from 'react-svg'
 import IconEmail from '../../../../assets/icons/icon-email.svg'
 import IconUser from '../../../../assets/icons/icon-user.svg'
