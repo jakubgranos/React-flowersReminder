@@ -1,0 +1,7 @@
+{
+  "name": "flowersReminder",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

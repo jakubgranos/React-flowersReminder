@@ -1,0 +1,8 @@
+{
+	"appId": "io.ionic.flowersReminder",
+	"appName": "flowersReminder",
+	"bundledWebRuntime": false,
+	"npmClient": "npm",
+	"webDir": "build",
+	"cordova": {}
+}

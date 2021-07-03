@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">flowersReminder</string>
+    <string name="title_activity_main">flowersReminder</string>
+    <string name="package_name">io.ionic.flowersReminder</string>
+    <string name="custom_url_scheme">io.ionic.flowersReminder</string>
+</resources>

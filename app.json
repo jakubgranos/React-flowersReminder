@@ -1,0 +1,11 @@
+{
+	"expo": {
+		"sdkVersion": "25.0.0",
+		"android": {
+			"package": "com.lingonasaft.myapp",
+			"versionCode": 1,
+			"permissions": [],
+			"icon": "./test=icon.png"
+		}
+	}
+}

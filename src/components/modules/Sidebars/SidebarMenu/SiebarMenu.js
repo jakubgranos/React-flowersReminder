@@ -6,6 +6,7 @@ const SidebarMenu = () => {
 	return (
 		<SidebarMenuSection className={sideBarActive ? "active" : null}>
 			<Hamburger sidebarClass={{ setSidebarActive, sideBarActive }} />
+
 		</SidebarMenuSection>
 	)
 }
