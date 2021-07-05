@@ -2,8 +2,10 @@ import styled from "styled-components";
 
 const AuthSection = styled.section`
 	background: white;
-	width: auto;
-	height: auto;
+	width: 100%;
+	min-height: 100vh;
+	overflow: auto;
+
 	display: flex;
 	flex-direction: row;
 	margin: 0 auto;
@@ -11,33 +13,31 @@ const AuthSection = styled.section`
 	align-items: stretch;
 	flex-direction: column;
 	position: relative;
-	max-width: 480px;
-	padding: 80px 60px 70px 60px;
-	overflow: hidden;
-	border-radius: 33px;
+	padding: 80px 60px 30px 60px;
+
 	box-shadow: 15px 9px 18px #cc7a0454;
 	transition: transform 8s;
-	min-height: 840px;
-	
+
 	@keyframes TopBottom {
 		from {
 			height: 340px;
-			border-radius: 0 0 90% 50%;
+			border-radius: 0 0 75% 40%;
 		}
+
 		to {
 			height: 100%;
-			border-radius: 0 0 10% 10%;
+			border-radius: 0 0 0% 0%;
 		}
 	}
 
 	@keyframes BottomTop {
 		from {
 			height: 100%;
-			border-radius: 0 0 10% 10%;
+			border-radius: 0 0 0% 0%;
 		}
 		to {
 			height: 340px;
-			border-radius: 0 0 90% 50%;
+			border-radius: 0 0 75% 40%;
 		}
 	}
 
@@ -45,22 +45,22 @@ const AuthSection = styled.section`
 		content: '';
 		display: block;
 		position: absolute;
-		width: 130%;
+		width: 130.1%;
 		background-image: linear-gradient(to right bottom, #f7971e, #fba516, #feb40d, #ffc304, #ffd200);
 		height: 340px;
 		top: 0;
-		left: -40px;
+		left: -30%;
 		z-index: 3;
-		border-radius: 0 0 90% 50%;
-		transition: height 2s, border-radius 4s;
+		border-radius: 0 0 75% 40%;
+		transition: height 1s, border-radius 2s;
 		animation: BottomTop 2s infinite alternate;
 		animation-iteration-count: 1;
 	}
 
 	&.active {
 		&:before {
-		animation: TopBottom 2s infinite alternate;
-		animation-iteration-count: 2;
+			animation: TopBottom 2s infinite alternate;
+			animation-iteration-count: 2;
 		}
 	}
 
@@ -194,11 +194,14 @@ const AuthFormLinkTo = styled.p`
 	text-align: right;
 	padding: 0 15px;
 
-	a {
+	button {
 		text-decoration: none;
 		font-size: 18px;
 		color: #f99c1b;
 		cursor: pointer;
+		background-color: transparent;
+		border: none;
+
 	}
 `;
 

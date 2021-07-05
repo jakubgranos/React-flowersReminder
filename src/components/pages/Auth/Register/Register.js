@@ -55,12 +55,12 @@ const Register = () => {
 
 	return (
 		<AuthSection className={newClass}>
-
 			<AuthHeadingSection className={newClass}>
 				<AuthHeading>Rejestracja</AuthHeading>
 				<AuthSubHeading>Dołącz do nas - Już nigdy nie <br></br> zapomnisz o kwiatkach!</AuthSubHeading>
 			</AuthHeadingSection>
 			<AuthFormWrapper>
+				{feedback !== '' && <AuthFormFeedback> {feedback} </AuthFormFeedback>}
 				<AuthFormLabel>
 					<AuthFormInput type="email" placeholder="Email*" value={email} onChange={e => setEmail(e.target.value)} required />
 					<ReactSVG src={IconEmail} />
@@ -75,7 +75,6 @@ const Register = () => {
 				</AuthFormLabel>
 
 				<AuthFormButton onClick={(e) => submitListener(e)}>Stwórz konto</AuthFormButton>
-				{feedback !== '' && <AuthFormFeedback> {feedback} </AuthFormFeedback>}
 				<AuthFormLinkTo>Masz już konto? <button onClick={changeToLogin}>Zaloguj się</button> </AuthFormLinkTo>
 			</AuthFormWrapper>
 		</AuthSection>

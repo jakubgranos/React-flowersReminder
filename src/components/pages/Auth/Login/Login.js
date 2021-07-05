@@ -64,9 +64,10 @@ const Login = () => {
 		<AuthSection className={newClass}>
 			<AuthHeadingSection>
 				<AuthHeading>Logowanie</AuthHeading>
-				<AuthSubHeading>Witaj ponownie, <br></br> Życzymy miłego dnia! </AuthSubHeading>
+				<AuthSubHeading>Witaj Użytkowniku, <br></br> Życzymy miłego dnia! </AuthSubHeading>
 			</AuthHeadingSection>
 			<AuthFormWrapper>
+				{feedback !== '' && <AuthFormFeedback> {feedback} </AuthFormFeedback>}
 				<AuthFormLabel>
 					<AuthFormInput type="email" placeholder="Email" value={userEmail} onChange={e => setUserEmail(e.target.value)} />
 					<ReactSVG src={IconEmail} />
@@ -76,7 +77,6 @@ const Login = () => {
 					<ReactSVG src={IconPassword} />
 				</AuthFormLabel>
 				<AuthFormButton onClick={(e) => submitListener(e)}>Zaloguj się</AuthFormButton>
-				{feedback !== '' && <AuthFormFeedback> {feedback} </AuthFormFeedback>}
 				<AuthFormLinkTo >Nie masz jeszcze konta? <button onClick={changeToLogin}>Zarejestruj się</button> </AuthFormLinkTo>
 			</AuthFormWrapper>
 		</AuthSection>

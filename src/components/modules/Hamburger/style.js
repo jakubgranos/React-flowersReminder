@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const HamburgerWrapper = styled.div`
+const HamburgerWrapper = styled.button`
     width: 50px;
     height: 36px;
 	display: flex;
@@ -10,8 +10,10 @@ const HamburgerWrapper = styled.div`
 	position: absolute;
     z-index: 3;
     top: 80px;
-    right: 30px;
+    right: 40px;
     transform: translate(-50%, -50%);
+	background: transparent;
+	border: none;
 
 	&.active {
 		span:nth-child(2) {
