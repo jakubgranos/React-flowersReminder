@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from '@emotion/styled'
 
-const AuthSection = styled.section`
+export const AuthSection = styled.section`
 	background: white;
 	width: 100%;
 	min-height: 100vh;
@@ -45,7 +45,7 @@ const AuthSection = styled.section`
 		content: '';
 		display: block;
 		position: absolute;
-		width: 130.1%;
+		width: 130%;
 		background-image: linear-gradient(to right bottom, #f7971e, #fba516, #feb40d, #ffc304, #ffd200);
 		height: 340px;
 		top: 0;
@@ -65,11 +65,11 @@ const AuthSection = styled.section`
 	}
 
 	&.active-zoom {
-		transform: scale(100);
+		transform: scale(20);
 	}
 `;
 
-const AuthHeadingSection = styled.div`
+export const AuthHeadingSection = styled.div`
 	margin: 0 0 130px 0;
 	position: relative;
 	z-index: 4;
@@ -88,14 +88,14 @@ const AuthHeadingSection = styled.div`
 		animation: changeOpacity 2s;
 	}
 `;
-const AuthHeading = styled.h1`
+export const AuthHeading = styled.h1`
 	color: white;
 	font-size: 40px;
 	line-height: 45px;
 	font-weight: 900;
 `;
 
-const AuthSubHeading = styled.p`
+export const AuthSubHeading = styled.p`
 	color: white;
 	position: relative;
 	z-index: 1;
@@ -108,12 +108,12 @@ const AuthSubHeading = styled.p`
 	}
 
 `;
-const AuthFormWrapper = styled.form`
+export const AuthFormWrapper = styled.form`
 	width: 100%;
 	height: 100%;
 `;
 
-const AuthFormLabel = styled.label`
+export const AuthFormLabel = styled.label`
 	position: relative;
 	display: block;
 
@@ -133,7 +133,7 @@ const AuthFormLabel = styled.label`
 
 `;
 
-const AuthFormInput = styled.input`
+export const AuthFormInput = styled.input`
 	width: 100%;
 	min-height: 65px;
 	border: 1px solid lightgray;
@@ -163,7 +163,7 @@ const AuthFormInput = styled.input`
 	}
 `;
 
-const AuthFormButton = styled.button`
+export const AuthFormButton = styled.button`
 	width: 100%;
 	padding: 20px 15px;
 	background-image: linear-gradient(to right bottom, #f7971e, #fba516, #feb40d, #ffc304, #ffd200);
@@ -186,7 +186,7 @@ const AuthFormButton = styled.button`
 	}
 `;
 
-const AuthFormLinkTo = styled.p`
+export const AuthFormLinkTo = styled.p`
 	margin: 0;
 	margin-top: 10px;
 	font-size: 16px;
@@ -206,7 +206,7 @@ const AuthFormLinkTo = styled.p`
 `;
 
 
-const AuthFormFeedback = styled.p`
+export const AuthFormFeedback = styled.p`
 	margin: 15px 0;
     padding: 11px 15px;
     border-radius: 50px;
@@ -214,5 +214,3 @@ const AuthFormFeedback = styled.p`
     background: #e82a2a;
 	color: white;
 `;
-
-export { AuthSection, AuthHeadingSection, AuthHeading, AuthSubHeading, AuthFormWrapper, AuthFormLabel, AuthFormInput, AuthFormButton, AuthFormLinkTo, AuthFormFeedback };

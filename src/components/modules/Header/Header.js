@@ -1,36 +1,18 @@
 import React, { useState } from 'react'
-import { useHistory, Link } from "react-router-dom";
-import { HeaderWrapper, HeaderNav } from './style';
-import Hamburger from '../Hamburger/Hamburger';
-import fire from '../../firebase';
-
+import { HeaderWrapper, HeaderNav, HeaderAddbutton } from './style';
+import Addflower from '../AddFlower/AddFlower'
 const Header = () => {
-	const history = useHistory();
 	const [sideBarActive, setSidebarActive] = useState('');
-	const logout = (e) => {
-		e.preventDefault();
-		fire.auth().signOut().then(() => {
-			history.push('/')
-		})
+
+	const switchHeaderActive = () => {
+		setSidebarActive(!sideBarActive);
+		sideBarActive ? setSidebarActive(false) : setSidebarActive(true);
 	}
 
 	return (
 		<HeaderWrapper className={sideBarActive ? "active" : null}>
-			<Hamburger sidebarClass={{ setSidebarActive, sideBarActive }} />
-			<HeaderNav className={sideBarActive ? "active" : null}>
-				<ul>
-					<li><Link to="/">Home</Link></li>
-					<li><Link to="/">Profile</Link></li>
-					<li><Link to="/">Settings</Link></li>
-				</ul>
-
-				<ul>
-					<li><Link to="/">Oceń Aplikacje</Link></li>
-					<li><Link to="/">Zgłoś Problem</Link></li>
-					<button onClick={(e) => logout(e)}>Wygoluj się</button>
-				</ul>
-
-			</HeaderNav>
+			<HeaderAddbutton onClick={switchHeaderActive} className={sideBarActive ? "active" : null}>+</HeaderAddbutton>
+			<Addflower testprop={sideBarActive} className={sideBarActive ? "active" : null}></Addflower>
 		</HeaderWrapper>
 	)
 }

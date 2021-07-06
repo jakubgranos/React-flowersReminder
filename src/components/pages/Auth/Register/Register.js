@@ -38,9 +38,14 @@ const Register = () => {
 					username: username,
 					email: email
 				})
+				setChangeAuthComponent(false)
 			}, 2100)
 		}).catch(err => {
-			setFeedback(err.message)
+			setNewClass('active');
+			setTimeout(() => {
+				setFeedback(err.message)
+				setNewClass();
+			}, 2100)
 		})
 	}
 

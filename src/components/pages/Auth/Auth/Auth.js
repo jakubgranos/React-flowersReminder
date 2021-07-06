@@ -15,3 +15,5 @@ const Auth = () => {
 }
 
 export default Auth;
+{/* <a href='https://pl.freepik.com/wektory/drzewo'>Drzewo plik wektorowy utworzone przez freepik - pl.freepik.com</a> */ }
+{/* <a href="http://www.freepik.com">Designed by Freepik</a> */ }

@@ -35,7 +35,7 @@ const Login = () => {
 				setNewClass('active active-zoom');
 				setTimeout(() => {
 					history.push('/homepage')
-				}, 1000)
+				}, 1500)
 			}
 		}).catch(err => {
 			setNewClass('active');

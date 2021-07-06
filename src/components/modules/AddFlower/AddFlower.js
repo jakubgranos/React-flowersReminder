@@ -1,25 +1,20 @@
 import React, { useState } from 'react';
-import { AddFlowerSection, AddFlowerButton, AddFlowerModal, CloseFlowerModal } from './style';
-import AddFlowerForm from './form/AddFlowerForm';
-const AddFlower = () => {
-	const [activeModal, setActiveModal] = useState('');
-	const activateFlowerModal = () => {
-		setActiveModal(!activeModal);
-	}
+import { AddFlowerForm, AddFlowerFormImage, AddFlowerInputsWrapper, AddFlowerInput, AddFlowerWrapper, AddFlowerHint } from './style';
+import ImagesPlaceholder from '../../../assets/images/images-placeholder.png'
 
+const AddFlower = (props) => {
+	const [active, setActive] = useState('');
 	return (
-		<AddFlowerSection className={activeModal ? 'active' : null}>
-			<AddFlowerButton onClick={activateFlowerModal} />
-			<AddFlowerModal className={activeModal ? 'active' : null} >
-				<CloseFlowerModal onClick={activateFlowerModal}>
-					<span></span>
-					<span></span>
-				</CloseFlowerModal>
-				<h2>Aby dodać kwiatka, wypełnij wszystkie poniższe pola, to proste!</h2>
-				<AddFlowerForm></AddFlowerForm>
-			</AddFlowerModal>
-		</AddFlowerSection>
-	)
+		<AddFlowerWrapper className={props.testprop ? 'active' : null}>
+			<AddFlowerHint>?</AddFlowerHint>
+			<AddFlowerForm>
+				<AddFlowerInputsWrapper>
+					<AddFlowerFormImage src={ImagesPlaceholder} alt="image placeholder" />
+					<AddFlowerInput type="file" />
+				</AddFlowerInputsWrapper>
+			</AddFlowerForm>
+		</AddFlowerWrapper>
+	);
 }
 
-export default AddFlower
+export default AddFlower;

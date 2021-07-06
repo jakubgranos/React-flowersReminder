@@ -1,44 +1,24 @@
-import styled from "styled-components";
+import styled from '@emotion/styled'
 
-const HeaderWrapper = styled.header`
+export const HeaderWrapper = styled.header`
 	position: fixed;
-	top:0;
+	bottom:0;
 	left: 0;
 	width: 100%;
-	height: 230px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	transition width 1s, height 1s;
+	height: 70px;
+	transition: height 1s;
 	z-index: 3;
 
-	&:before {
-		content: '';
-		display: block;
-		position: fixed;
-		width: 130%;
-		background-image: linear-gradient(to right bottom, #f7971e, #fba516, #feb40d, #ffc304, #ffd200);
-		height: 230px;
-		top: 0;
-		left: -30%;
-		z-index: 3;
-		border-radius: 0 0 62% 89%;
-		transition: height 1s, border-radius 2s;
-	}
+    background: #a38555;
+    box-shadow: 0 12px 40px #12190d;
 
 	&.active {
-		height: 100%;
-
-		&:before {
-			height: 100%;
-			border-radius: 0 0 0 0;
-			}
-		}
+		height: 93%;
 	}
 
 `;
 
-const HeaderNav = styled.nav`
+export const HeaderNav = styled.nav`
 	opacity: 0;
 	position: relative;
 	z-index: 3;
@@ -84,13 +64,35 @@ const HeaderNav = styled.nav`
 		}
 	}
 
-	ul:not(:first-child) {
+	ul:not(:first-of-type) {
 		li, button  {
 			font-size: 30px;
 			line-height: 1;
-			
 		}
 	}
 `;
 
-export { HeaderWrapper, HeaderNav }
+export const HeaderAddbutton = styled.button`
+	position: absolute;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+	border: none;
+    left: 50%;
+    top: -1px;
+    padding: 10px;
+    background: #7cb65b;
+    border-radius: 50px;
+    width: 90px;
+    height: 90px;
+	font-family: 'Open Sans', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    color: white;
+	transition: transform 0.5s;
+
+	&.active {
+		transform: translate(-50%, -50%) rotate(45deg);
+	}
+`;
